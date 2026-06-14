@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio CE — Wassim El Mesbahi</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background: #020617; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; }
+  .tab-btn { transition: all 0.2s; }
+  .tab-btn.active { background: #2563eb; color: white; }
+  .tab-btn:not(.active) { color: #94a3b8; }
+  .tab-btn:not(.active):hover { background: #1e293b; color: white; }
+  .blok-tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .accordion-content { display: none; }
+  .accordion-content.open { display: block; }
+  blockquote { border-left: 3px solid #22c55e; padding-left: 12px; font-style: italic; }
+  .spin-btn.active { background: #2563eb; color: white; }
+  .spin-btn:not(.active) { background: #1e293b; color: #94a3b8; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .bar-fill { height: 6px; border-radius: 3px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- HEADER -->
+<div style="background: linear-gradient(135deg, #0f172a, #1e293b); border-bottom: 1px solid #334155;">
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="flex items-start gap-4">
+      <div style="width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;flex-shrink:0;">WE</div>
+      <div>
+        <h1 class="text-2xl font-bold text-white">Wassim El Mesbahi</h1>
+        <p style="color:#60a5fa;font-weight:600;">Commerciële Economie · CE1B2</p>
+        <p style="color:#64748b;font-size:14px;margin-top:4px;">Hogeschool van Amsterdam · Jaar 1 — 2025/2026</p>
+      </div>
+    </div>
+
+    <!-- Blok cijfers -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
+      <div style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:12px;">
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">Blok 1</div>
+        <div style="font-size:13px;font-weight:600;color:#e2e8f0;margin-bottom:8px;">Waarde Creëren</div>
+        <div style="font-size:26px;font-weight:900;color:#f59e0b;">6</div>
+        <div style="font-size:11px;color:#64748b;margin-top:4px;">sep – dec 2025</div>
+      </div>
+      <div style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:12px;">
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">Blok 2</div>
+        <div style="font-size:13px;font-weight:600;color:#e2e8f0;margin-bottom:8px;">Koers Bepalen</div>
+        <div style="font-size:26px;font-weight:900;color:#22c55e;">7</div>
+        <div style="font-size:11px;color:#64748b;margin-top:4px;">jan – apr 2025</div>
+      </div>
+      <div style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:12px;">
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">Blok 3</div>
+        <div style="font-size:13px;font-weight:600;color:#e2e8f0;margin-bottom:8px;">Business Dev.</div>
+        <div style="font-size:26px;font-weight:900;color:#f59e0b;">6</div>
+        <div style="font-size:11px;color:#64748b;margin-top:4px;">sep – apr 2026</div>
+      </div>
+      <div style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:12px;">
+        <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;">Blok 4</div>
+        <div style="font-size:13px;font-weight:600;color:#e2e8f0;margin-bottom:8px;">Realiseren</div>
+        <div style="font-size:26px;font-weight:900;color:#6366f1;">⏳</div>
+        <div style="font-size:11px;color:#64748b;margin-top:4px;">apr – jun 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div style="position:sticky;top:0;z-index:50;background:#020617;border-bottom:1px solid #1e293b;">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="flex gap-1 overflow-x-auto no-scrollbar py-3" style="scrollbar-width:none;">
+      <button class="tab-btn active px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap cursor-pointer" onclick="showTab('overzicht',this)">Overzicht</button>
+      <button class="tab-btn px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap cursor-pointer" onclick="showTab('reflectie',this)">Reflectie jaar 1</button>
+      <button class="tab-btn px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap cursor-pointer" onclick="showTab('spinnenweb',this)">Spinnenweb</button>
+      <button class="tab-btn px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap cursor-pointer" onclick="showTab('starrt',this)">Reflecties</button>
+      <button class="tab-btn px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap cursor-pointer" onclick="showTab('feedback',this)">Feedback</button>
+      <button class="tab-btn px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap cursor-pointer" onclick="showTab('bewijs',this)">Bewijs</button>
+      <button class="tab-btn px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap cursor-pointer" onclick="showTab('doelen',this)">Doelen</button>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-4 py-6">
+
+<!-- OVERZICHT -->
+<div id="tab-overzicht" class="section active space-y-5">
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <h2 class="text-lg font-bold mb-3">Over mij</h2>
+    <p style="color:#cbd5e1;line-height:1.7;">Ik ben Wassim El Mesbahi, student Commerciële Economie aan de HvA (klas CE1B2). Dit is mijn portfolio van jaar 1. Het laat zien hoe ik ben gegroeid in de 12 CE-competenties over 4 blokken. Naast mijn studie heb ik een eigen web-app gebouwd (Personal OS) met meer dan 20 modules — het sterkste bewijs van mijn ondernemersgeest en doorzettingsvermogen.</p>
+  </div>
+
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <h2 class="text-lg font-bold mb-4">Mijn sterkste momenten dit jaar</h2>
+    <div class="space-y-3">
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0 mt-0.5" style="background:#f59e0b22;color:#f59e0b;">Blok 1</span>
+        <span style="color:#cbd5e1;font-size:14px;">SMARTi-doelen opgesteld en besproken met mentor Sander Bieling</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0 mt-0.5" style="background:#22c55e22;color:#22c55e;">Blok 2</span>
+        <span style="color:#cbd5e1;font-size:14px;">Presentatie als mezelf gegeven — Sander: <em>"Wat was ik trots op jou!"</em> Cijfer omhoog naar 7</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0 mt-0.5" style="background:#ef444422;color:#ef4444;">Blok 3</span>
+        <span style="color:#cbd5e1;font-size:14px;">Salesgame gewonnen — 1e plaats van de klas</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0 mt-0.5" style="background:#ef444422;color:#ef4444;">Blok 3</span>
+        <span style="color:#cbd5e1;font-size:14px;">Atomic Habits gelezen + GoodHabitz training "Omgaan met falen" buiten school gevolgd</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0 mt-0.5" style="background:#6366f122;color:#6366f1;">Blok 4</span>
+        <span style="color:#cbd5e1;font-size:14px;">Eigen sportles gegeven — Julia de Leeuw: alle criteria <strong style="color:#22c55e;">"Goed"</strong>, <em>"Je hebt alles in huis om uit te groeien tot een sterke leidinggevende!"</em></span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0 mt-0.5" style="background:#6366f122;color:#6366f1;">Blok 4</span>
+        <span style="color:#cbd5e1;font-size:14px;">Engelse meeting — voor het eerst écht zelfverzekerd in het Engels</span>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0 mt-0.5" style="background:#6366f122;color:#6366f1;">Blok 4</span>
+        <span style="color:#cbd5e1;font-size:14px;">Nieuwe groep (Ytzen, Sybe, Justin) — direct goede klik en succesvol evenement</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <h2 class="text-lg font-bold mb-4">Docenten & mentoren</h2>
+    <div class="space-y-3" style="font-size:14px;">
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0" style="background:#f59e0b22;color:#f59e0b;">Blok 1 & 2</span>
+        <div><span style="color:#94a3b8;">Docenten: </span><span style="color:#e2e8f0;">Rob van Hest & Sophie op den Kamp</span><span style="color:#94a3b8;"> · Mentor: </span><span style="color:#e2e8f0;">Sander Bieling</span></div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0" style="background:#6366f122;color:#6366f1;">Blok 3 & 4</span>
+        <div><span style="color:#94a3b8;">Docenten: </span><span style="color:#e2e8f0;">Simone Beekman <span style="color:#6366f1;">(ook mentor)</span>, Robin Leenders & Rich Tiggelaar</span></div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="blok-tag flex-shrink-0" style="background:#ec489922;color:#ec4899;">Alle blokken</span>
+        <div><span style="color:#94a3b8;">Sport: </span><span style="color:#e2e8f0;">Julia de Leeuw</span><span style="color:#94a3b8;"> · Engels: </span><span style="color:#e2e8f0;">Jason Price</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REFLECTIE JAAR 1 -->
+<div id="tab-reflectie" class="section space-y-5">
+
+  <!-- Intro -->
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <h2 style="color:#f1f5f9;font-size:20px;font-weight:700;margin-bottom:8px;">Reflectie jaar 1 — Portfolio en Reflectie Niveau 1</h2>
+    <p style="color:#94a3b8;font-size:14px;line-height:1.7;">Een kritische terugblik op mijn ontwikkeling in Commerciële Economie jaar 1. Ik bespreek mijn spinnenweb-groei, wat ik over mezelf heb geleerd, welke momenten mij hebben geraakt, en welke keuzes ik maak voor jaar 2.</p>
+  </div>
+
+  <!-- 1. Spinnenweb groei -->
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#1e3a5f;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="color:#60a5fa;font-weight:700;font-size:14px;">1</span>
+      </div>
+      <h3 style="color:#f1f5f9;font-size:16px;font-weight:600;">Spinnenweb: waar zit mijn groei?</h3>
+    </div>
+    <p style="color:#cbd5e1;font-size:14px;line-height:1.7;margin-bottom:12px;">
+      Bij mijn 0-meting (september 2025) scoorde ik op de meeste competenties al redelijk hoog, maar twee gebieden vielen op als groeipunt: <strong style="color:#f1f5f9;">Commercieel Bewustzijn</strong> (6/10) en <strong style="color:#f1f5f9;">Doorzettingsvermogen</strong> (6/10). Dat klopt met hoe ik destijds was: ik had ideeën genoeg, maar miste het zakelijke inzicht om die te vertalen naar echte waarde, en gaf soms te snel op als iets moeilijk werd.
+    </p>
+    <p style="color:#cbd5e1;font-size:14px;line-height:1.7;margin-bottom:12px;">
+      Na blok 2 (december 2025) zag ik al een verschuiving: Communiceren ging van 7 naar 8, Initiatief van 7 naar 8, en Verantwoordelijkheidsbesef van 8 naar 9. Dit komt doordat ik in blok 2 meer verantwoordelijkheid nam in groepsopdrachten en actiever communiceerde met docenten en medestudenten.
+    </p>
+    <p style="color:#cbd5e1;font-size:14px;line-height:1.7;margin-bottom:12px;">
+      Nu (juni 2026) is de grootste groei zichtbaar in:
+    </p>
+    <div class="space-y-2">
+      <div style="background:#1e293b;border-radius:10px;padding:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <span style="color:#60a5fa;font-size:13px;font-weight:600;">Commercieel Bewustzijn</span>
+          <span style="color:#22c55e;font-size:13px;font-weight:700;">6 → 8 (+2)</span>
+        </div>
+        <p style="color:#94a3b8;font-size:13px;">Door bedrijfscases, marktanalyses en mijn eigen Personal OS-project leer ik hoe je een idee commercieel vertaalt.</p>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;padding:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <span style="color:#60a5fa;font-size:13px;font-weight:600;">Doorzettingsvermogen</span>
+          <span style="color:#22c55e;font-size:13px;font-weight:700;">6 → 8 (+2)</span>
+        </div>
+        <p style="color:#94a3b8;font-size:13px;">Het bouwen van een app naast mijn studie leerde mij door te zetten ook als het zwaar was — dit zie ik nu terug in schoolopdrachten.</p>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;padding:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <span style="color:#60a5fa;font-size:13px;font-weight:600;">Samenwerken</span>
+          <span style="color:#22c55e;font-size:13px;font-weight:700;">9 → 10 (+1)</span>
+        </div>
+        <p style="color:#94a3b8;font-size:13px;">Ik ben gegroeid van een goede teamspeler naar iemand die ook anderen op gang helpt en de sfeer in een groep bewust beïnvloedt.</p>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;padding:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <span style="color:#f59e0b;font-size:13px;font-weight:600;">Zelfsturing</span>
+          <span style="color:#f59e0b;font-size:13px;font-weight:700;">8 → 7 (-1)</span>
+        </div>
+        <p style="color:#94a3b8;font-size:13px;">Blok 3 was intensief en ik merkte dat ik moeite had om alles te plannen en prioriteiten te stellen. Dit is een bewust leerpunt voor jaar 2.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Zelfkennis -->
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#1e3a5f;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="color:#60a5fa;font-weight:700;font-size:14px;">2</span>
+      </div>
+      <h3 style="color:#f1f5f9;font-size:16px;font-weight:600;">Wat heb ik over mezelf geleerd?</h3>
+    </div>
+    <div class="space-y-4">
+      <div style="border-left:3px solid #22c55e;padding-left:14px;">
+        <p style="color:#22c55e;font-size:12px;font-weight:600;margin-bottom:4px;">MIJN KRACHT</p>
+        <p style="color:#cbd5e1;font-size:14px;line-height:1.7;">
+          Ik ben van nature iemand die initiatief neemt en anderen meesleurt in een idee. In groepsprojecten pak ik snel de leidersrol — niet omdat ik baas wil zijn, maar omdat ik energie krijg van richting geven. Dit is ook terug te zien in mijn spinnenweb: Leiderschap staat al vanaf de 0-meting op 10/10.
+        </p>
+      </div>
+      <div style="border-left:3px solid #60a5fa;padding-left:14px;">
+        <p style="color:#60a5fa;font-size:12px;font-weight:600;margin-bottom:4px;">WAAR BEN IK GOED IN</p>
+        <p style="color:#cbd5e1;font-size:14px;line-height:1.7;">
+          Ik ben goed in het snel verbanden zien tussen losse informatie en die omzetten in een plan of product. Dit bleek tijdens de businesscases en is ook de reden dat ik mijn Personal OS-app heb gebouwd: ik zag een probleem in hoe ik mijn leven beheerde en bouwde er gewoon een oplossing voor.
+        </p>
+      </div>
+      <div style="border-left:3px solid #f59e0b;padding-left:14px;">
+        <p style="color:#f59e0b;font-size:12px;font-weight:600;margin-bottom:4px;">WAAR BEN IK TROTS OP</p>
+        <p style="color:#cbd5e1;font-size:14px;line-height:1.7;">
+          Ik ben het meest trots op het feit dat ik naast een zwaar jaar 1 een volledige webapplicatie heb gebouwd met meer dan 20 modules. Dit heb ik niet geleerd op school maar volledig zelf uitgezocht. Het bewijst dat ik kan leren als ik het nodig heb en dat ik het doorzettingsvermogen heb om iets van begin tot eind af te maken.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Interessante momenten -->
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#1e3a5f;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="color:#60a5fa;font-weight:700;font-size:14px;">3</span>
+      </div>
+      <h3 style="color:#f1f5f9;font-size:16px;font-weight:600;">Op welke momenten werd mijn interesse gewekt?</h3>
+    </div>
+    <div class="space-y-3">
+      <div style="background:#1e293b;border-radius:10px;padding:14px;">
+        <p style="color:#f1f5f9;font-size:14px;font-weight:600;margin-bottom:4px;">Blok 1 — Businesscase: kansen in de markt</p>
+        <p style="color:#94a3b8;font-size:13px;line-height:1.7;">Voor het eerst begreep ik echt hoe bedrijven werken: niet alleen producten verkopen, maar een probleem oplossen voor een specifieke doelgroep. Het moment dat we een marktanalyse maakten en ontdekten dat er een gat in de markt zat, klikte er iets voor mij. Ik wil ondernemen — niet als bijbaan, maar als levensstijl.</p>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;padding:14px;">
+        <p style="color:#f1f5f9;font-size:14px;font-weight:600;margin-bottom:4px;">Blok 2 — Presenteren voor een "klant"</p>
+        <p style="color:#94a3b8;font-size:13px;line-height:1.7;">We moesten ons businessplan pitchen alsof we voor echte investeerders stonden. Ik werd nerveus, maar daarna groeide ik juist door de druk. Ik ontdekte dat ik het leuk vind om mensen te overtuigen — niet met trucs, maar met een sterk verhaal.</p>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;padding:14px;">
+        <p style="color:#f1f5f9;font-size:14px;font-weight:600;margin-bottom:4px;">Blok 3 — Business Development: echt onderzoek doen</p>
+        <p style="color:#94a3b8;font-size:13px;line-height:1.7;">In blok 3 deden we verdiepend marktonderzoek. Ik leerde hoe je van ruwe data naar echte inzichten gaat. Dit trok mij enorm: de combinatie van analytisch denken en commerciële toepassing is precies wat ik wil doen in mijn carrière.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Vakkennis -->
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#1e3a5f;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="color:#60a5fa;font-weight:700;font-size:14px;">4</span>
+      </div>
+      <h3 style="color:#f1f5f9;font-size:16px;font-weight:600;">Vakkennis: wat heb ik verdiept en wat wil ik nog leren?</h3>
+    </div>
+    <div class="space-y-3">
+      <div style="background:#1e293b;border-radius:10px;padding:14px;">
+        <p style="color:#22c55e;font-size:12px;font-weight:600;margin-bottom:6px;">HET MEEST VERDIEPT</p>
+        <p style="color:#cbd5e1;font-size:13px;line-height:1.7;">
+          <strong style="color:#f1f5f9;">Marketing en marktonderzoek</strong> — ik begrijp nu hoe je een doelgroep analyseert, een propositie scherp maakt en een marketingstrategie opbouwt. Dit heb ik ook toegepast in mijn eigen app door na te denken over de gebruikerservaring als "product".
+        </p>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;padding:14px;">
+        <p style="color:#60a5fa;font-size:12px;font-weight:600;margin-bottom:6px;">WAT IK NOG MEER WIL LEREN</p>
+        <ul style="color:#cbd5e1;font-size:13px;line-height:1.9;padding-left:0;list-style:none;">
+          <li style="display:flex;gap:8px;"><span style="color:#60a5fa;">→</span> <span><strong style="color:#f1f5f9;">Financiën en bedrijfseconomie</strong> — ik merk dat ik moeite heb met cijfers vertalen naar zakelijke beslissingen. In jaar 2 wil ik hier sterker in worden.</span></li>
+          <li style="display:flex;gap:8px;"><span style="color:#60a5fa;">→</span> <span><strong style="color:#f1f5f9;">Digitale marketing en data-analyse</strong> — de combinatie van commercie en technologie trekt mij. Ik wil leren hoe je data gebruikt om marketingkeuzes te onderbouwen.</span></li>
+          <li style="display:flex;gap:8px;"><span style="color:#60a5fa;">→</span> <span><strong style="color:#f1f5f9;">Onderhandelen en relatiebeheer</strong> — in B2B-situaties is dit cruciaal en ik wil dit in de praktijk brengen via stages of real-life projecten.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Keuzes niveau 2 -->
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#1e3a5f;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="color:#60a5fa;font-weight:700;font-size:14px;">5</span>
+      </div>
+      <h3 style="color:#f1f5f9;font-size:16px;font-weight:600;">Welke keuzes maak ik voor niveau 2?</h3>
+    </div>
+    <div style="background:#1e3a5f;border:1px solid #2563eb;border-radius:12px;padding:14px;margin-bottom:14px;display:flex;gap:12px;align-items:flex-start;">
+      <div style="flex-shrink:0;">
+        <div style="background:#2563eb;border-radius:8px;padding:6px 10px;">
+          <p style="color:white;font-size:11px;font-weight:700;margin:0;">LEERPAD 6</p>
+        </div>
+      </div>
+      <div>
+        <p style="color:#f1f5f9;font-size:14px;font-weight:600;margin-bottom:4px;">Sport & Sportfinanciën</p>
+        <p style="color:#93c5fd;font-size:13px;line-height:1.6;margin:0;">Ik kies bewust voor Leerpad 6 in niveau 2 — een leerpad gericht op de sportsector, met aandacht voor sportmanagement, financiën van sport en commerciële kansen binnen de sportwereld. Dit sluit direct aan bij mijn interesse in jeugdscouting, zaakwaarnemerschap en de businesskant van voetbal.</p>
+      </div>
+    </div>
+    <div class="space-y-2">
+      <div style="background:#1e293b;border-radius:10px;padding:12px;display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#60a5fa;margin-top:5px;flex-shrink:0;"></div>
+        <div>
+          <p style="color:#f1f5f9;font-size:13px;font-weight:600;">Sportfinanciën en businesskant van voetbal</p>
+          <p style="color:#94a3b8;font-size:13px;">Ik wil begrijpen hoe clubs, makelaars en zaakwaarnemers financieel functioneren: transferbudgetten, contractstructuren, sponsoring en inkomstenmodellen.</p>
+        </div>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;padding:12px;display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#60a5fa;margin-top:5px;flex-shrink:0;"></div>
+        <div>
+          <p style="color:#f1f5f9;font-size:13px;font-weight:600;">Netwerk in de sportwereld opbouwen</p>
+          <p style="color:#94a3b8;font-size:13px;">Na het gesprek met Job van Players United wil ik dit soort contacten doorzetten. In jaar 2 ga ik actief meer professionals in de sport opzoeken via stages, evenementen en netwerkmomenten.</p>
+        </div>
+      </div>
+      <div style="background:#1e293b;border-radius:10px;padding:12px;display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#60a5fa;margin-top:5px;flex-shrink:0;"></div>
+        <div>
+          <p style="color:#f1f5f9;font-size:13px;font-weight:600;">Zelfsturing verbeteren via structuur</p>
+          <p style="color:#94a3b8;font-size:13px;">Na het dip in Zelfsturing (blok 3) ga ik in jaar 2 werken met een weekplanning en vaste reflectiemomenten — zodat ik mijn energie goed verdeel over school én mijn eigen projecten.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Conclusie -->
+  <div style="background:linear-gradient(135deg,#1e3a5f,#0f172a);border:1px solid #2563eb;border-radius:16px;padding:20px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="color:white;font-weight:700;font-size:14px;">6</span>
+      </div>
+      <h3 style="color:#f1f5f9;font-size:16px;font-weight:600;">Conclusie</h3>
+    </div>
+    <p style="color:#cbd5e1;font-size:14px;line-height:1.8;margin-bottom:12px;">
+      Jaar 1 Commerciële Economie was voor mij een jaar van ontdekken. Ik ontdekte dat ik van nature een leider en initiatiefnemer ben, dat commercie mij écht interesseert, en dat ik een sterkere zelfsturing nodig heb om mijn potentieel volledig te benutten.
+    </p>
+    <p style="color:#cbd5e1;font-size:14px;line-height:1.8;margin-bottom:12px;">
+      Het bouwen van mijn Personal OS-app naast mijn studie was misschien het meest waardevolle wat ik dit jaar heb gedaan. Niet omdat het technisch was, maar omdat het mij leerde dat ik kan leren als ik het wil, dat ik door kan zetten als het zwaar is, en dat ik ideeën om kan zetten in echte producten. Die mindset neem ik mee naar jaar 2.
+    </p>
+    <p style="color:#cbd5e1;font-size:14px;line-height:1.8;margin-bottom:12px;">
+      Mijn keuze voor <strong style="color:#f1f5f9;">Leerpad 6 (Sport & Sportfinanciën)</strong> in niveau 2 is geen toeval. Ik heb dit jaar ontdekt dat mijn interesses bij voetbal, scouting en de businesskant van sport liggen. Via podcasts, documentaires en een gesprek met een professional van Players United heb ik mijn eerste echte stap gezet richting mijn toekomstige carrière als zaakwaarnemer of sportmanager.
+    </p>
+    <p style="color:#93c5fd;font-size:14px;line-height:1.8;font-style:italic;">
+      "Ik ben jaar 1 binnengekomen als iemand met veel energie maar weinig focus. Ik ga jaar 2 in met die energie, met richting — en met een duidelijk doel: de sportwereld."
+    </p>
+  </div>
+
+</div>
+
+<!-- SPINNENWEB -->
+<div id="tab-spinnenweb" class="section space-y-5">
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <h2 class="text-lg font-bold mb-4">CE-skills ontwikkeling</h2>
+    <div class="flex flex-wrap gap-2 mb-5">
+      <button class="spin-btn active px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer" onclick="showSpin('vergelijk',this)">Vergelijk alle</button>
+      <button class="spin-btn px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer" onclick="showSpin('start',this)">Start (8 sep 2025)</button>
+      <button class="spin-btn px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer" onclick="showSpin('midden',this)">Halverwege (17 dec 2025)</button>
+      <button class="spin-btn px-3 py-1.5 rounded-lg text-sm font-medium cursor-pointer" onclick="showSpin('nu',this)">Nu (14 jun 2026)</button>
+    </div>
+    <svg id="spinnenweb-svg" viewBox="-20 0 540 460" style="width:100%;max-width:540px;display:block;margin:0 auto;"></svg>
+    <div id="spin-legend" class="flex gap-5 justify-center mt-3 flex-wrap" style="font-size:12px;"></div>
+  </div>
+
+  <!-- Score tabel -->
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:16px;padding:20px;">
+    <h3 class="font-semibold mb-4">Scores per skill</h3>
+    <div id="score-table" class="space-y-2"></div>
+    <div class="flex gap-4 mt-4" style="font-size:12px;">
+      <span style="color:#ef4444;">● Start</span>
+      <span style="color:#f59e0b;">● Halverwege</span>
+      <span style="color:#22c55e;font-weight:700;">● Nu</span>
+    </div>
+  </div>
+</div>
+
+<!-- STARRT -->
+<div id="tab-starrt" class="section">
+  <div class="flex gap-2 flex-wrap mb-4">
+    <button class="blok-filter-starrt active px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#2563eb;color:white;" onclick="filterAccordion('starrt','Alle',this)">Alle</button>
+    <button class="blok-filter-starrt px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterAccordion('starrt','Blok 1',this)">Blok 1</button>
+    <button class="blok-filter-starrt px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterAccordion('starrt','Blok 2',this)">Blok 2</button>
+    <button class="blok-filter-starrt px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterAccordion('starrt','Blok 3',this)">Blok 3</button>
+    <button class="blok-filter-starrt px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterAccordion('starrt','Blok 4',this)">Blok 4</button>
+  </div>
+  <div id="starrt-list" class="space-y-3"></div>
+</div>
+
+<!-- FEEDBACK -->
+<div id="tab-feedback" class="section">
+  <div class="flex gap-2 flex-wrap mb-4">
+    <button class="blok-filter-feedback active px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#2563eb;color:white;" onclick="filterAccordion('feedback','Alle',this)">Alle</button>
+    <button class="blok-filter-feedback px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterAccordion('feedback','Blok 1',this)">Blok 1</button>
+    <button class="blok-filter-feedback px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterAccordion('feedback','Blok 2',this)">Blok 2</button>
+    <button class="blok-filter-feedback px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterAccordion('feedback','Blok 3',this)">Blok 3</button>
+    <button class="blok-filter-feedback px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterAccordion('feedback','Blok 4',this)">Blok 4</button>
+  </div>
+  <div id="feedback-list" class="space-y-3"></div>
+</div>
+
+<!-- BEWIJS -->
+<div id="tab-bewijs" class="section">
+  <div class="flex gap-2 flex-wrap mb-4">
+    <button class="blok-filter-bewijs active px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#2563eb;color:white;" onclick="filterCards('Alle',this)">Alle</button>
+    <button class="blok-filter-bewijs px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterCards('Blok 1',this)">Blok 1</button>
+    <button class="blok-filter-bewijs px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterCards('Blok 2',this)">Blok 2</button>
+    <button class="blok-filter-bewijs px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterCards('Blok 3',this)">Blok 3</button>
+    <button class="blok-filter-bewijs px-3 py-1.5 rounded-lg text-sm cursor-pointer" style="background:#1e293b;color:#94a3b8;" onclick="filterCards('Blok 4',this)">Blok 4</button>
+  </div>
+  <div id="bewijs-grid" class="space-y-4"></div>
+</div>
+
+<!-- DOELEN -->
+<div id="tab-doelen" class="section space-y-4">
+  <div style="background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:16px;">
+    <p style="color:#94a3b8;font-size:14px;">Mijn SMARTi-leerdoelen voor jaar 2 — gebaseerd op de groei en verbeterpunten uit jaar 1.</p>
+  </div>
+  <div id="doelen-list" class="space-y-4"></div>
+</div>
+
+</div><!-- end max-w -->
+
+<div class="text-center py-8" style="color:#475569;font-size:12px;">Portfolio Wassim El Mesbahi · CE1B2 · HvA · Jaar 1 · 2025–2026</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────
+
+const CE_SKILLS = [
+  { key:'kritisch_denken',            label:'Kritisch denken',            kleur:'#38BDF8' },
+  { key:'creativiteit',               label:'Creativiteit',               kleur:'#FB923C' },
+  { key:'nieuwsgierigheid',           label:'Nieuwsgierigheid',           kleur:'#F59E0B' },
+  { key:'communiceren',               label:'Communiceren',               kleur:'#3B82F6' },
+  { key:'samenwerken',                label:'Samenwerken',                kleur:'#22C55E' },
+  { key:'leiderschap',                label:'Leiderschap',                kleur:'#EF4444' },
+  { key:'initiatief',                 label:'Initiatief',                 kleur:'#F97316' },
+  { key:'commercieel_bewustzijn',     label:'Commercieel bewustzijn',     kleur:'#10B981' },
+  { key:'doorzettingsvermogen',       label:'Doorzettingsvermogen',       kleur:'#EC4899' },
+  { key:'aanpassingsvermogen',        label:'Aanpassingsvermogen',        kleur:'#06B6D4' },
+  { key:'zelfsturing',                label:'Zelfsturing',                kleur:'#A855F7' },
+  { key:'verantwoordelijkheidsbesef', label:'Verantwoordelijkheidsbesef', kleur:'#8B5CF6' },
+]
+
+const SPINNENWEB = {
+  start:  { datum:'8 sep 2025 (0-meting)',  kleur:'#EF4444', scores:{kritisch_denken:8,creativiteit:9,nieuwsgierigheid:8,communiceren:7,samenwerken:9,leiderschap:10,initiatief:7,commercieel_bewustzijn:6,doorzettingsvermogen:6,aanpassingsvermogen:8,zelfsturing:8,verantwoordelijkheidsbesef:8} },
+  midden: { datum:'17 dec 2025 (na blok 2)',kleur:'#F59E0B', scores:{kritisch_denken:8,creativiteit:9,nieuwsgierigheid:8,communiceren:8,samenwerken:9,leiderschap:10,initiatief:8,commercieel_bewustzijn:7,doorzettingsvermogen:7,aanpassingsvermogen:8,zelfsturing:8,verantwoordelijkheidsbesef:9} },
+  nu:     { datum:'14 jun 2026 (nu)',        kleur:'#22C55E', scores:{kritisch_denken:8,creativiteit:9,nieuwsgierigheid:9,communiceren:9,samenwerken:10,leiderschap:10,initiatief:9,commercieel_bewustzijn:8,doorzettingsvermogen:8,aanpassingsvermogen:9,zelfsturing:7,verantwoordelijkheidsbesef:9} },
+}
+
+const STARRT = [
+  { blok:'Blok 1', skill:'Communiceren', datum:'15 nov 2025',
+    S:'In blok 1 moest ik bij het Keune project een pitch geven van 3 minuten voor de klas. In mijn eerste presentatie praatte ik te snel en gaf ik te veel informatie tegelijk, waardoor het publiek de draad kwijtraakte.',
+    T:'Mijn doel was om overtuigend en zonder lange stiltes te presenteren en de aandacht vast te houden.',
+    A:'Na mijn eerste presentatie vroeg ik actief feedback aan mijn docent en klasgenoten. Ik heb daarna extra geoefend, bewust langzamer gesproken en alleen de kernpunten in mijn verhaal gehouden.',
+    R:'Bij mijn tweede presentatie had ik maximaal 3 seconden stilte bij een pitch van 3 minuten. Ik hield de aandacht beter vast, praatte rustiger en voelde me zekerder voor de groep.',
+    Re:'Ik heb geleerd dat minder soms meer is. Door kort en krachtig te communiceren in plaats van alles te willen vertellen, maak ik meer impact.',
+    Tr:'In blok 2 wil ik de techniek "1 boodschap per slide" toepassen en mijn zelfvertrouwen behouden bij grotere groepen.' },
+  { blok:'Blok 1', skill:'Initiatief', datum:'20 nov 2025',
+    S:'Tijdens een groepsproject had een teamgenoot zijn toegewezen deel niet gemaakt op de dag voor de deadline. Het project dreigde onvolledig te worden ingeleverd.',
+    T:'Als groepslid was ik medeverantwoordelijk voor het eindresultaat. De opdracht moest compleet en op tijd worden ingeleverd.',
+    A:'Ik besloot het ontbrekende deel zelf op te pakken en die avond af te maken. Ik informeerde ook de rest van de groep.',
+    R:'Het project kon volledig en op tijd worden ingeleverd. De groep haalde een voldoende voor het eindresultaat.',
+    Re:'Ik leerde dat ik flexibel kan zijn en snel kan handelen onder druk. Tegelijk wil ik eerder in gesprek gaan als ik zie dat iets mis gaat.',
+    Tr:'In blok 2 eerder signaleren en bespreekbaar maken als ik zie dat iemand achterloopt.' },
+  { blok:'Blok 1', skill:'Zelfsturing', datum:'1 dec 2025',
+    S:'Aan het begin van blok 1 merkte ik dat ik moeite had om overzicht te houden over alle opdrachten en deadlines tegelijk. Ik werkte reactief in plaats van proactief.',
+    T:'Mijn mentor Sander Bieling vroeg mij een persoonlijk leerplan op te stellen en dit regelmatig bij te houden.',
+    A:'Ik heb een persoonlijk leerplan opgesteld met 3 SMARTi-doelen. Ik heb dit besproken met Sander en regelmatig updates gegeven.',
+    R:'Het leerplan gaf mij structuur en overzicht. Ik wist beter wat ik moest doen en wanneer.',
+    Re:'Zelfsturing betekent voor mij dat ik de regie neem over mijn eigen ontwikkeling. Een plan helpt om gefocust te blijven.',
+    Tr:'In blok 2 wil ik het leerplan actiever gebruiken en elke week bijhouden.' },
+  { blok:'Blok 1', skill:'Commercieel bewustzijn', datum:'1 jun 2025',
+    S:'Buiten school heb ik een persoonlijk project gestart: Personal OS, een eigen web-app om mijn dagelijkse leven te organiseren.',
+    T:'Een oplossing bouwen voor mijn eigen problemen: discipline, voortgang, gezondheid en persoonlijke groei samenvoegen in één tool.',
+    A:'Ik heb geleerd programmeren (Next.js, TypeScript), een productie-app gebouwd en uitgerold via Vercel. Ik testte de app met vrienden en verwerkte hun feedback.',
+    R:'Personal OS is een live, werkende web-app met meer dan 20 modules. Vrienden gebruiken de app actief.',
+    Re:'Dit laat zien wie ik ben: iemand die niet wacht tot iemand anders iets bouwt, maar het zelf aanpakt.',
+    Tr:'In niveau 2 wil ik de verbinding leggen tussen wat ik op school leer en wat ik in Personal OS bouw.' },
+  { blok:'Blok 2', skill:'Communiceren', datum:'17 dec 2025',
+    S:'In blok 2 moest ik een Engelse presentatie geven. Ik had me voorbereid met een AI-tekst die ik volledig uit mijn hoofd probeerde te leren. Het ging mis: ik vergat zinnen en raakte de draad kwijt. Ik schaamde me diep.',
+    T:'Bij de volgende presentatie moest ik laten zien dat ik wel degelijk kon presenteren in het Engels, maar dan op mijn eigen manier.',
+    A:'Ik besloot te presenteren zoals ik ben: beginnen met een klein grapje om mezelf rust te geven, daarna serieus uitleggen. Geen rol spelen, gewoon Wassim zijn.',
+    R:'Het werkte. Ik kon vrij praten, vragen beantwoorden en voelde me eindelijk zeker. Sander gaf aan dat het verschil enorm was: ik liet mijn persoonlijkheid zien.',
+    Re:'De grootste les: geen perfecte tekst opzeggen, maar vertellen wat ik echt begrijp. Wanneer ik mezelf blijf, kom ik sterker over.',
+    Tr:'In blok 3 ga ik presentaties altijd vanuit eigen begrip voorbereiden, niet vanuit een script.' },
+  { blok:'Blok 2', skill:'Leiderschap', datum:'17 dec 2025',
+    S:'In mijn projectgroep in blok 2 zaten drie studenten die allemaal graag de leiding namen, waaronder ik. Dit leek een recept voor botsingen.',
+    T:'Zorgen dat we niet zouden botsen maar onze krachten zouden bundelen.',
+    A:'Ik heb vanaf het begin gezegd dat ik niet wilde dat we zouden botsen. Ik heb voorgesteld samen taken te verdelen en duidelijke regels te maken.',
+    R:'De samenwerking verliep soepel. Leiderschap = voor overzicht zorgen, niet de baas zijn.',
+    Re:'Leiderschap betekent niet dat ik de baas ben. Mijn invloed gebruik ik het beste door te verbinden in plaats van te overheersen.',
+    Tr:'In blok 3 wil ik anderen meer coachen: vragen stellen die hen helpen zelf tot het antwoord te komen.' },
+  { blok:'Blok 2', skill:'Zelfsturing', datum:'17 dec 2025',
+    S:'Mijn verbeterpunt uit blok 1 was plannen. In blok 2 wilde ik dit concreet aanpakken om minder stress te hebben aan het einde van projecten.',
+    T:'Een systeem gebruiken om mijn wekelijkse werk bij te houden en structureel voorbereid te zijn.',
+    A:'Ik heb gewerkt met een weekplanning met drie prioriteiten. Meeste weken haalde ik er minimaal twee. Eerlijk verbeterpunt: op tijd komen lukt nog niet altijd.',
+    R:'Meer overzicht en betere voorbereiding. Mijn adviespitch was merkbaar sterker doordat ik op tijd begon met oefenen.',
+    Re:'Zelfsturing is voor mij het moeilijkst omdat het discipline vereist. Punctualiteit is mijn concrete aandachtspunt voor blok 3.',
+    Tr:'Structureel op tijd komen — eerder vertrekken, agenda als vaste gewoonte.' },
+  { blok:'Blok 3', skill:'Initiatief', datum:'1 apr 2026',
+    S:'Tijdens de salesgame in blok 3 werkten we met Kenan, Quinten, Per en Davey. In het begin waren we niet tevreden. Er was geen duidelijke taakverdeling.',
+    T:'Initiatief nemen om de kwaliteit te verbeteren en het team richting te geven.',
+    A:'Ik heb het logboek bijgehouden, taken verdeeld, vragen gesteld aan Robin Leenders over onze slidedeck. Buiten school las ik Atomic Habits en volgde een GoodHabitz training over omgaan met falen.',
+    R:'Ons team eindigde op de eerste plaats van de salesgame. Mijn motivatie bleek het sterkst in competitieve opdrachten.',
+    Re:'Initiatief werkt het beste als ik het combineer met structuur. De salesgame liet zien wie ik ben als ik ergens voor gemotiveerd ben.',
+    Tr:'In blok 4 wil ik mijn eigen motivatie creëren door doelen te stellen en te concurreren met mezelf.' },
+  { blok:'Blok 3', skill:'Communiceren', datum:'1 apr 2026',
+    S:'Ik had twee presentaties in blok 3: een koffiepresentatie en een Engelse pitch. In een mentorgesprek met Simone Beekman ontdekte ik dat ik tijdens gesprekken regelmatig wegkeek.',
+    T:'Duidelijker en zelfverzekerder presenteren met beter oogcontact.',
+    A:'Bij de koffiepresentatie begon ik met een persoonlijke anekdote. Na het mentorgesprek ben ik bewust oogcontact gaan oefenen.',
+    R:'Beide presentaties verliepen aanzienlijk beter. Ik praatte rustiger, had meer zelfvertrouwen en voelde me zekerder.',
+    Re:'Kleine bewuste aanpassingen (oogcontact, rustiger tempo, anekdote als opening) maken een groot verschil in hoe ik overkom.',
+    Tr:'In blok 4 vaker de opening van groepspresentaties nemen voor meer ervaring.' },
+  { blok:'Blok 3', skill:'Zelfsturing', datum:'1 apr 2026',
+    S:'Punctualiteit bleef mijn aandachtspunt uit blok 2. Bij sportlessen was ik vaak op tijd; bij reguliere lessen lukte dit nog niet consistent.',
+    T:'Consequenter op tijd komen door mijn ochtendroutine te verbeteren.',
+    A:'Kleding avond ervoor klaarleggen, eerder opstaan, vooraf bepalen wat ik ontbijt.',
+    R:'Bij sportlessen was ik dit blok vaak ruim op tijd, soms vóór de docent. Dat bewijst dat ik het kan.',
+    Re:'Motivatie beïnvloedt mijn punctualiteit. Als ik ergens voor gemotiveerd ben, kom ik op tijd.',
+    Tr:'Blok 4: logboek bijhouden van aankomsttijden, avondvoorbereiding consequent volhouden.' },
+  { blok:'Blok 4', skill:'Leiderschap', datum:'1 jun 2026',
+    S:'In blok 4 moest ik voor het eerst echt lesgeven aan mijn klas tijdens de sportlessen bij Science Park. Oefening: baken hockey met frisbee — 4 teams van 2. Ik zag er tegenop.',
+    T:'Een volledige sportles ontwerpen, uitleggen en leiden voor mijn klas, beoordeeld door Julia de Leeuw.',
+    A:'Layout van tevoren uitgewerkt. Rustig en duidelijk gestart. Toen er te weinig banken waren, snel geschakeld naar balken. Begon met één bal, voegde later een tweede toe.',
+    R:'Julia scoorde mij op alle onderdelen "Goed": presentatie, organisatie en leidinggeven. Haar slotwoord: "Je hebt alles in huis om uit te groeien tot een sterke leidinggevende in het bedrijfsleven!"',
+    Re:'Het grote verschil was dat ik voorbereid was én mezelf bleef. De frisbee-twist, het bijsturen — dat was ik op mijn best.',
+    Tr:'In het tweede jaar dingen bedenken, uitvoeren en bijsturen. Voetbaltrainer, zaakwaarnemer of manager — dit telt overal.' },
+  { blok:'Blok 4', skill:'Samenwerken', datum:'1 jun 2026',
+    S:'In blok 4 werkte ik met een compleet nieuwe groep: Ytzen, Sybe en Justin — niet mijn vriendenkring. We maakten een business intake voor Mr. Sushi en organiseerden een evenement.',
+    T:'Organiserende rol nemen in een onbekende groepsdynamiek en zorgen dat het evenement succesvol was.',
+    A:'Vanaf dag 1 investeerde ik in contact. Taken verdeeld, planning gemaakt, actief feedback gevraagd. Business intake inclusief segmentatie, concurrentieanalyse en organisatiedoelstellingen.',
+    R:'Het evenement was een succes. Docenten: "Je ligt goed op koers. Mooi om te zien dat je ook in een nieuwe groep je draai meteen kan vinden."',
+    Re:'Dit bewijst: ik kan in élke groep mijn draai vinden. Mijn sociale vaardigheid en positieve energie zijn mijn sterkste professionele troeven.',
+    Tr:'In het tweede jaar: nieuwe groepen, nieuwe mensen, maar altijd dezelfde Wassim.' },
+  { blok:'Blok 4', skill:'Communiceren (Engels)', datum:'1 jun 2026',
+    S:'Mijn Engelse journey: blok 1 rampzalig (vergat alles), blok 2 iets beter, blok 3 redelijk. In blok 4: mijn tweede Engelse meeting.',
+    T:'Een professionele Engelse meeting houden en laten zien dat ik gegroeid was.',
+    A:'Meeting voorbereid vanuit begrip, niet vanuit een script. Bewust rustiger gesproken, structuur vastgehouden. Mezelf gebleven.',
+    R:'Voor mijn gevoel fantastisch. Zelfverzekerd, duidelijke woorden, ik voelde dat het klopte. Na een jaar van mislukken wist ik: dit is mijn niveau.',
+    Re:'Het duurde een heel jaar om te begrijpen waarom mijn Engels instortte: ik probeerde perfect te zijn. Zodra ik stopte met een rol spelen, werkte het.',
+    Tr:'In jaar 2 focus op vocabulaire — structuur en zelfvertrouwen zijn er, nu de woorden nog.' },
+  { blok:'Blok 4', skill:'Doorzettingsvermogen (Sport)', datum:'1 jun 2026',
+    S:'Sport-journey: begon als enthousiaste deelnemer. Blok 1: moeite met onbekende sporten. Blok 2: soms vals gespeeld om te winnen. Blok 3: bij skiën te snel "ik kan het niet" gezegd. Blok 4: lesgegeven.',
+    T:'Groeien van enthousiaste deelnemer naar iemand die anderen kan begeleiden in sport.',
+    A:'Per blok bewuster omgaan met negatieve zelfpraat. Bij padelen gewoon meedoen en drie potjes winnen. Mijn 4 jaar voetbaltrainerservaring inzetten bij het ontwerpen van mijn eigen les.',
+    R:'Julia blok 3: "Je bent een topper!" Blok 4 scoreformulier: alles "Goed". Slotwoord: "Je hebt alles in huis om uit te groeien tot een sterke leidinggevende in het bedrijfsleven!"',
+    Re:'Sport was de spiegel van mijn hele ontwikkeling. Elke les leerde mij iets over mezelf.',
+    Tr:'Doorzettingsvermogen = ook doorgaan als ik denk dat ik het niet kan. Dit neem ik mee naar jaar 2.' },
+]
+
+const FEEDBACK = [
+  { blok:'Blok 1', vanWie:'Sander Bieling', rol:'Mentor/coach', skill:'Verantwoordelijkheidsbesef', datum:'10 dec 2025',
+    tekst:'Je bent bijna altijd aanwezig, Wassim. Je hebt een positieve uitstraling en een grote gunfactor. Ik vind het leuk dat je erbij bent, laten we verder werken aan jouw ontwikkeling in blok 2!',
+    gedaan:'Dit bevestigt dat aanwezigheid en positieve energie mijn sterke punten zijn. Ik wil deze energie omzetten naar concrete resultaten.' },
+  { blok:'Blok 1', vanWie:'Sander Bieling', rol:'Mentor/coach', skill:'Communiceren', datum:'10 dec 2025',
+    tekst:'Je bent soms wat warrig in je antwoorden. Je hebt een grote gunfactor, maar zorg dat je boodschap ook helder is. Je geeft ook wat weinig aandacht aan je kennisbites.',
+    gedaan:'Ik heb besloten om voor ik iets zeg eerst na te denken over de kernboodschap. In mijn presentaties merk ik al dat ik beknopter ben geworden.' },
+  { blok:'Blok 1', vanWie:'Rob van Hest & Sophie op den Kamp', rol:'Docenten', skill:'Commercieel bewustzijn', datum:'15 dec 2025',
+    tekst:'Eindcijfer blok 1 (Waarde Creëren): 6. Wassim laat zien dat hij sociaal sterk is en makkelijk contact maakt, maar moet zijn commerciële kennis en zelfsturing verder ontwikkelen om inhoudelijk sterker te worden.',
+    gedaan:'De 6 was een eerlijk signaal. In blok 2 heb ik bewuster gewerkt aan de inhoud — met een 7 als resultaat.' },
+  { blok:'Blok 2', vanWie:'Sander Bieling', rol:'Mentor/coach', skill:'Communiceren', datum:'17 dec 2025',
+    tekst:'Wassim, wat was ik trots op jou bij de laatste presentatie! Het verschil met eerdere presentaties was echt enorm. Je was nu in staat om gewoon als Wassim een verhaal te vertellen! Met een grapje, je kon helemaal jouw persoonlijkheid in de presentatie laten terugkomen. Top!',
+    gedaan:'Dit bevestigt dat mijn aanpak werkt: presenteren vanuit begrip en persoonlijkheid, niet vanuit een script.' },
+  { blok:'Blok 2', vanWie:'Sander Bieling', rol:'Mentor/coach', skill:'Leiderschap', datum:'17 dec 2025',
+    tekst:'Je bent één van die mensen met natuurlijk leiderschap. Koester dat, en gebruik het ten goede. Soms is het ook tijd om even serieus te zijn — gebruik jouw invloed om even te focussen.',
+    gedaan:'Ik heb nagedacht over wanneer ik sociaal moet zijn en wanneer ik focus moet brengen. Plezier is goed, maar niet ten koste van productiviteit.' },
+  { blok:'Blok 2', vanWie:'Sander Bieling', rol:'Mentor/coach', skill:'Kritisch denken', datum:'17 dec 2025',
+    tekst:'Ik heb mooie groei bij je gezien. Wees niet al te kritisch op jezelf. Kritisch zijn mag, maar blijf positief over jezelf. Vier de successen, en probeer te leren van zowel successen als fouten.',
+    gedaan:'Dit raakt mijn perfectionisme. Ik ga bewuster successen vieren — ook de kleine — in plaats van alleen te kijken naar wat beter kon.' },
+  { blok:'Blok 2', vanWie:'Rob van Hest & Sophie op den Kamp', rol:'Docenten', skill:'Communiceren', datum:'17 dec 2025',
+    tekst:'Eindcijfer blok 2 (Koers Bepalen): 7. Wassim laat duidelijke groei zien ten opzichte van blok 1. Zijn presentatievaardigheden zijn merkbaar verbeterd en hij toont meer zelfvertrouwen voor de groep.',
+    gedaan:'De stap van 6 naar 7 bevestigt dat mijn aanpak werkt. Dit ga ik vasthouden in blok 3 en 4.' },
+  { blok:'Blok 3', vanWie:'Simone Beekman, Robin Leenders & Rich Tiggelaar', rol:'Docenten', skill:'Communiceren', datum:'1 apr 2026',
+    tekst:'Wassim, dit is een met hakken over de sloot voldoende. We zien een heel fijne, capabele jongen die uitblinkt in contact maken met anderen, zoals in het verkoopgesprek, je groep of tijdens de sportlessen.',
+    gedaan:'Wake-up call. In blok 4 ga ik dit omzetten: alleen eigen werk, altijd aanwezig en op tijd, in gesprek met docenten over inhoud.' },
+  { blok:'Blok 3', vanWie:'Simone Beekman, Robin Leenders & Rich Tiggelaar', rol:'Docenten', skill:'Zelfsturing', datum:'1 apr 2026',
+    tekst:'Je aandacht, niveau en zelfsturing moeten naar een hoger level om volgend blok ook positief af te sluiten. Dat betekent: alleen maar eigen werk inleveren, laat AI los want je werk is inhoudelijk niet diepgaand genoeg. Altijd aanwezig en altijd op tijd. Al je werk inleveren. In gesprek gaan met de docent over de inhoud.',
+    gedaan:'Mijn AI-gebruik maakte mijn werk oppervlakkiger. Ik ga in blok 4 alles zelf schrijven, vanuit mijn eigen ervaringen.' },
+  { blok:'Blok 3', vanWie:'Simone Beekman, Robin Leenders & Rich Tiggelaar', rol:'Docenten', skill:'Initiatief', datum:'1 apr 2026',
+    tekst:'Wij weten alledrie zeker dat jij het in je hebt om bovenstaande punten zo goed te doen! Zet m op Wassim dit laatste blok.',
+    gedaan:'De docenten geloven in mij. Blok 4 is mijn kans om dat vertrouwen waar te maken.' },
+  { blok:'Blok 3', vanWie:'Simone Beekman', rol:'Mentor', skill:'Communiceren', datum:'1 mrt 2026',
+    tekst:'Tijdens het mentorgesprek sprak Simone over mijn persoonlijkheid, zelfverzekerdheid en mijn rol in het voetbal. Zij observeerde dat ik regelmatig wegkeek tijdens het praten.',
+    gedaan:'Na dit gesprek ben ik bewuster oogcontact gaan houden in gesprekken en presentaties.' },
+  { blok:'Blok 4', vanWie:'Robin Leenders, Simone Beekman & Rich Tiggelaar', rol:'Docenten', skill:'Samenwerken', datum:'1 mei 2026',
+    tekst:'Je ligt goed op koers Wassim. Mooi om te zien dat je ook in een nieuwe groep je draai meteen kan vinden en een positieve bijdrage levert. Ga zo door!',
+    gedaan:'Dit bevestigt mijn groei dit jaar: ik kan in élke groep functioneren. Dezelfde energie, maar nu met meer structuur.' },
+  { blok:'Blok 4', vanWie:'Julia de Leeuw', rol:'Docent sport', skill:'Leiderschap', datum:'1 jun 2026',
+    tekst:'Je bent netjes op tijd aanwezig en gaat direct aan de slag. Je zoekt proactief naar wat er nodig is en stuurt je team hierin ook aan. Mooi om te zien dat je snel kunt schakelen wanneer iets niet loopt zoals gepland. Je hebt duidelijk je best gedaan om out of the box te denken met je spelvorm: hoekenhockey met een extra twist, de frisbee. Van nature ben je een vriendelijk en betrokken persoon die klaarstaat voor anderen. Je hebt alles in huis om uit te groeien tot een sterke leidinggevende in het bedrijfsleven!',
+    gedaan:'Dit is de mooiste feedback die ik dit jaar heb gekregen. Het bevestigt wie ik wil worden.' },
+  { blok:'Blok 4', vanWie:'Julia de Leeuw', rol:'Docent sport', skill:'Doorzettingsvermogen', datum:'17 dec 2025',
+    tekst:'Wassim, wat een mooie en eerlijke terugblik op de sportlessen. Mocht je een keer willen praten over de dingen die je schrijft wat betreft vertrouwen in jezelf, dan doe ik dat graag. Je bent een topper! Bedankt voor je positieve inzet (en doorzettingsvermogen) bij de sportlessen!',
+    gedaan:'Julia zag mijn eerlijkheid over mijn negatieve zelfpraat. Dit heeft mij geholpen in blok 4 anders met uitdagingen om te gaan.' },
+  { blok:'Blok 4', vanWie:'Jason Price', rol:'Docent Engels', skill:'Communiceren', datum:'1 jun 2026',
+    tekst:'Jason Price bleef in Wassim geloven ook toen hij de meest rampzalige Engelse presentaties gaf. In blok 4 had Wassim zijn tweede Engelse meeting — die ging fantastisch. Hij sprak zelfverzekerd en duidelijk. Focus voor jaar 2: woordenschat uitbreiden om de taal echt te beheersen.',
+    gedaan:'Jason Price bleef in mij geloven door alles heen. In blok 4 ging de meeting fantastisch. In jaar 2 focus ik op woordenschat.' },
+]
+
+const BEWIJS = [
+  { blok:'Blok 1', skill:'Zelfsturing', titel:'SMARTi-doelen blok 1 — Waarde Creëren', beschrijving:'Document met 3 uitgewerkte SMARTi-leerdoelen voor blok 1: Sales & Marketingkennis, Presentatievaardigheden en Zelfsturing.', type:'document' },
+  { blok:'Blok 1', skill:'Communiceren', titel:'Snapshot Professioneel Gedrag — Blok 1', beschrijving:'Reflectieverslag over mijn groei in communicatieve vaardigheden. Van warrige, te snelle presentator naar iemand die gericht, rustig en zelfverzekerd presenteert. Doel van max. 3 sec stilte aantoonbaar behaald.', type:'document' },
+  { blok:'Blok 1', skill:'Commercieel bewustzijn', titel:'Personal OS — Zelfgebouwde web-app', beschrijving:'Volledig functionele web-app gebouwd buiten school als persoonlijk productiviteitssysteem. Meer dan 20 modules (gym, voeding, gebed, boeken, games, portfolio en meer). De app draait live en wordt actief gebruikt door vrienden die feedback geven. Beschikbaar als bewijs op aanvraag bij Wassim.', type:'prestatie' },
+  { blok:'Blok 2', skill:'Communiceren', titel:'Reflectieopdracht Blok 2 — CE1B2', beschrijving:'Uitgebreide reflectie op blok 2 met concrete voorbeelden van groei in communicatie, leiderschap en kritisch denken. Van mislukte AI-presentatie naar sterke adviespitch op eigen wijze.', type:'document' },
+  { blok:'Blok 2', skill:'Kritisch denken', titel:'SWOT-analyse — Persoonlijke analyse blok 2', beschrijving:'Persoonlijke SWOT-analyse: Strengths (bewust, communicatief vaardig, sociaal sterk), Weaknesses (perfectionisme, onzekerheid), Opportunities (groeien in leiderschap), Threats (druk door perfectionisme).', type:'document' },
+  { blok:'Blok 3', skill:'Initiatief', titel:'Salesgame — 1e plaats CE1B2', beschrijving:'Tijdens de salesgame in blok 3 eindigde ons team op de eerste plaats. Ik hield het logboek bij, verdeelde taken en zorgde voor resultaatgericht werken.', type:'prestatie' },
+  { blok:'Blok 3', skill:'Nieuwsgierigheid', titel:'Atomic Habits gelezen + GoodHabitz training', beschrijving:'Buiten school Atomic Habits gelezen en een GoodHabitz training over omgaan met falen afgerond. Beide sluiten aan op mijn persoonlijke ontwikkeldoelen.', type:'certificaat' },
+  { blok:'Blok 3', skill:'Communiceren', titel:'Mentorgesprek Simone — reflectielog oogcontact', beschrijving:'Tijdens het mentorgesprek met Simone Beekman werd ik bewust van mijn oogcontactgedrag. Dit leidde tot een actief verbeterpunt dat ik in presentaties en gesprekken heb toegepast.', type:'document' },
+  { blok:'Blok 4', skill:'Samenwerken', titel:'Business Intake Mr. Sushi — CE1B2 Team 1', beschrijving:'Volledige business intake voor Mr. Sushi (70+ vestigingen). Team: Ytzen, Sybe, Justin en Wassim. Presentatie 13-05-2026. Inhoud: segmentatie, concurrentieanalyse, organisatiedoelstellingen.', type:'document' },
+  { blok:'Blok 4', skill:'Leiderschap', titel:'Scoreformulier Physical Awareness — Julia de Leeuw', beschrijving:'Officieel scoreformulier voor mijn sportles (baken hockey + frisbee). Alle criteria "Goed": presentatie (6/6), organisatie (5/5), leidinggeven (5/5). Toelichting: proactiviteit, flexibiliteit, creativiteit en teamleiderschap.', type:'prestatie' },
+  { blok:'Blok 4', skill:'Aanpassingsvermogen', titel:'Sport reflecties Blok 1-4 — van deelnemer naar lesgever', beschrijving:'Vier sportreflecties over het volledige jaar: van enthousiaste deelnemer (blok 1) via bewustwording (blok 2-3) naar lesgeven met scoreformulier "Goed" op alle criteria (blok 4).', type:'document' },
+  { blok:'Blok 4', skill:'Zelfsturing', titel:'SMARTi doelen blok 4 — jeugdscout, evenement, communicatie', beschrijving:'Drie uitgewerkte SMARTi-doelen: verdiepen in beroep jeugdscout/zaakwaarnemer (6 podcasts/interviews), organiserende rol bij evenement, communicatie verbeteren (3x oefenen, feedback vragen).', type:'document' },
+]
+
+const DOELEN = [
+  { skill:'Nieuwsgierigheid', doel:'Verdiepen in het beroep jeugdscout en zaakwaarnemer in het voetbal',
+    specifiek:'Minimaal 6 podcasts, documentaires of interviews bekijken/beluisteren over scouting en spelersbegeleiding. Minimaal 1 gesprek voeren met een professional uit de voetbalwereld.',
+    meetbaar:'Aantoonbare bewijsstukken: luisternotities, samenvattingen en verslagen van gesprekken.',
+    tijdgebonden:'Afgerond voor einde blok 4 (juni 2026).',
+    status:'behaald',
+    bewijs:[
+      { titel:'Podcastserie: Haarlem, Mino\'s Imperium', detail:'Volledige serie van 7 afleveringen beluisterd via Spotify. Geleerd hoe Mino Raiola zijn carrière heeft opgebouwd van Haarlem tot de internationale top. Inzicht gekregen in onderhandelingen, spelersbegeleiding en de invloed van zaakwaarnemers. Geleerd hoe zijn familie na zijn overlijden het bedrijf heeft voortgezet.', geleerd:'Hoe belangrijk netwerken, onderhandelen en vertrouwen zijn binnen het werk van een zaakwaarnemer.' },
+      { titel:'Documentaireserie: Voetbalmakelaars (NPO Start / YouTube)', detail:'Verschillende makelaars en spelersbegeleidingsbedrijven gevolgd. Voorbeelden gezien van transfers, contractonderhandelingen en talentontwikkeling. Inzicht gekregen in de dagelijkse werkzaamheden van een zaakwaarnemer.', geleerd:'Een realistischer beeld van het beroep — er komt veel meer bij kijken dan alleen transfers regelen.' },
+      { titel:'Gesprek met Job van Players United', detail:'Tijdens het bedrijfsbezoek op school. Informatie gekregen over scouting, spelersbegeleiding en doorgroeimogelijkheden. Gesproken over spelers zoals Kenneth Taylor en Carel Eiting. Inzicht gekregen in de route van jeugdscout naar zaakwaarnemer.', geleerd:'Welke vaardigheden nodig zijn om succesvol te zijn binnen scouting en spelersbegeleiding.' },
+      { titel:'Gesprekken met medestudenten, docenten en professionals', detail:'Tijdens evenementen, lessen en netwerkmomenten. Mijn toekomstplannen besproken. Feedback en tips ontvangen over werken binnen de sportwereld.', geleerd:'Deze gesprekken hebben mij geholpen om kritisch na te denken over mijn toekomst en mijn interesses verder te onderzoeken.' },
+    ] },
+  { skill:'Communiceren', doel:'Korter en krachtiger mijn ideeën overbrengen zonder te veel te praten',
+    specifiek:'Bij elke presentatie of groepsdiscussie maximaal 3 kernpunten communiceren en niet uitweiden.',
+    meetbaar:'Feedback van minstens 2 medestudenten/docenten per blok dat mijn boodschap helder en beknopt was.',
+    tijdgebonden:'Zichtbaar verbeterd aan het einde van blok 1 niveau 2 (januari 2027).' },
+  { skill:'Zelfsturing', doel:'Minder stress aan het einde van projecten door beter te plannen',
+    specifiek:'Elke week mijn leerplan bijhouden en projecttaken minimaal 3 dagen voor deadline af hebben.',
+    meetbaar:'Geen last-minute paniek bij inleverdeadlines. Bijgehouden in mijn leerplan.',
+    tijdgebonden:'Gedurende heel niveau 2, evaluatie per blok.' },
+  { skill:'Verantwoordelijkheidsbesef', doel:'Kennisbites structureel bijhouden en aantoonbaar verwerken',
+    specifiek:'Elke kennisbite lezen, aantekeningen maken en toepassen in opdrachten of reflecties.',
+    meetbaar:'Elke week minimaal 1 kennisbite verwerkt en genoteerd in mijn portfolio.',
+    tijdgebonden:'Vanaf blok 1 niveau 2, doorlopend.' },
+]
+
+// ── SPINNENWEB SVG ────────────────────────────────────────────
+let huidigSpin = 'vergelijk'
+
+function tekenSpinnenweb(modus) {
+  huidigSpin = modus
+  const svg = document.getElementById('spinnenweb-svg')
+  const N = CE_SKILLS.length
+  const cx = 270, cy = 230, r = 120
+  const hoeken = CE_SKILLS.map((_, i) => (i / N) * 2 * Math.PI - Math.PI / 2)
+
+  const pt = (scores, i) => {
+    const v = (scores[CE_SKILLS[i].key] / 10) * r
+    return [cx + v * Math.cos(hoeken[i]), cy + v * Math.sin(hoeken[i])]
+  }
+  const poly = pts => pts.map(p => p.join(',')).join(' ')
+
+  let html = ''
+
+  // Grid ringen
+  for (const v of [2,4,6,8,10]) {
+    const pts = CE_SKILLS.map((_, i) => { const f=(v/10)*r; return [cx+f*Math.cos(hoeken[i]), cy+f*Math.sin(hoeken[i])] })
+    html += `<polygon points="${poly(pts)}" fill="none" stroke="#1e293b" stroke-width="1"/>`
+    html += `<text x="${cx+4}" y="${cy-(v/10)*r+4}" font-size="9" fill="#475569">${v}</text>`
+  }
+
+  // Assen
+  CE_SKILLS.forEach((_, i) => {
+    html += `<line x1="${cx}" y1="${cy}" x2="${cx+r*Math.cos(hoeken[i])}" y2="${cy+r*Math.sin(hoeken[i])}" stroke="#1e293b" stroke-width="1"/>`
+  })
+
+  // Data
+  const momenten = modus === 'vergelijk'
+    ? [['start','#EF4444'],['midden','#F59E0B'],['nu','#22C55E']]
+    : [[modus, SPINNENWEB[modus].kleur]]
+
+  for (const [key, kleur] of momenten) {
+    const s = SPINNENWEB[key].scores
+    const pts = CE_SKILLS.map((_, i) => pt(s, i))
+    html += `<polygon points="${poly(pts)}" fill="${kleur}25" stroke="${kleur}" stroke-width="2.5"/>`
+  }
+
+  // Labels
+  CE_SKILLS.forEach((skill, i) => {
+    const lr = r + 26
+    const x = cx + lr * Math.cos(hoeken[i])
+    const y = cy + lr * Math.sin(hoeken[i])
+    const anchor = x < cx-5 ? 'end' : x > cx+5 ? 'start' : 'middle'
+    html += `<text x="${x}" y="${y}" text-anchor="${anchor}" dominant-baseline="middle" font-size="9.5" fill="${skill.kleur}" font-weight="700">${skill.label}</text>`
+  })
+
+  svg.innerHTML = html
+
+  // Legenda
+  const leg = document.getElementById('spin-legend')
+  if (modus === 'vergelijk') {
+    leg.innerHTML = `
+      <span style="display:flex;align-items:center;gap:6px;"><span style="width:16px;height:3px;background:#EF4444;border-radius:2px;display:inline-block;"></span><span style="font-size:12px;color:#94a3b8;">Start</span></span>
+      <span style="display:flex;align-items:center;gap:6px;"><span style="width:16px;height:3px;background:#F59E0B;border-radius:2px;display:inline-block;"></span><span style="font-size:12px;color:#94a3b8;">Halverwege</span></span>
+      <span style="display:flex;align-items:center;gap:6px;"><span style="width:16px;height:3px;background:#22C55E;border-radius:2px;display:inline-block;"></span><span style="font-size:12px;color:#94a3b8;">Nu</span></span>`
+  } else {
+    leg.innerHTML = `<span style="font-size:12px;color:#94a3b8;">${SPINNENWEB[modus].datum}</span>`
+  }
+}
+
+// Score tabel
+function buildScoreTable() {
+  const el = document.getElementById('score-table')
+  el.innerHTML = CE_SKILLS.map(skill => {
+    const s = SPINNENWEB.start.scores[skill.key]
+    const m = SPINNENWEB.midden.scores[skill.key]
+    const n = SPINNENWEB.nu.scores[skill.key]
+    const g = n - s
+    const groeiKleur = g > 0 ? '#22c55e' : g < 0 ? '#ef4444' : '#64748b'
+    return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <div style="width:180px;font-size:12px;color:#cbd5e1;flex-shrink:0;">${skill.label}</div>
+      <span style="font-size:11px;color:#ef4444;width:14px;text-align:center;">${s}</span>
+      <span style="font-size:11px;color:#f59e0b;width:14px;text-align:center;">${m}</span>
+      <span style="font-size:11px;color:#22c55e;font-weight:700;width:14px;text-align:center;">${n}</span>
+      <div style="flex:1;height:6px;background:#1e293b;border-radius:3px;">
+        <div style="height:6px;border-radius:3px;width:${n*10}%;background:${skill.kleur};"></div>
+      </div>
+      <span style="font-size:11px;font-weight:700;width:22px;text-align:right;color:${groeiKleur};">${g>0?'+'+g:g}</span>
+    </div>`
+  }).join('')
+}
+
+// ── STARRT ────────────────────────────────────────────────────
+function buildAccordion(type, data) {
+  const container = document.getElementById(type+'-list')
+  container.innerHTML = data.map((e, i) => {
+    const blokKleur = e.blok === 'Blok 4' ? '#6366f1' : e.blok === 'Blok 3' ? '#ef4444' : e.blok === 'Blok 2' ? '#22c55e' : '#f59e0b'
+    if (type === 'starrt') {
+      return `<div class="starrt-item" data-blok="${e.blok}" style="background:#0f172a;border:1px solid #1e293b;border-radius:14px;overflow:hidden;">
+        <button style="width:100%;text-align:left;padding:14px 16px;cursor:pointer;background:none;border:none;color:inherit;" onclick="toggleAcc(this)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="blok-tag" style="background:${blokKleur}22;color:${blokKleur};flex-shrink:0;">${e.blok}</span>
+              <div>
+                <div style="font-weight:600;color:white;font-size:14px;">${e.skill}</div>
+                <div style="font-size:12px;color:#64748b;">${e.datum}</div>
+              </div>
+            </div>
+            <span class="arrow" style="color:#64748b;flex-shrink:0;">▼</span>
+          </div>
+        </button>
+        <div class="accordion-content" style="padding:0 16px 16px;border-top:1px solid #1e293b;">
+          ${[['Situatie','#38bdf8',e.S],['Taak','#a855f7',e.T],['Actie','#f97316',e.A],['Resultaat','#22c55e',e.R],['Reflectie','#f59e0b',e.Re],['Transfer','#ec4899',e.Tr]].map(([l,c,v])=>`
+          <div style="margin-top:12px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:${c};margin-bottom:4px;">${l}</div>
+            <p style="color:#cbd5e1;font-size:13px;line-height:1.65;margin:0;">${v}</p>
+          </div>`).join('')}
+        </div>
+      </div>`
+    } else {
+      return `<div class="feedback-item" data-blok="${e.blok}" style="background:#0f172a;border:1px solid #1e293b;border-radius:14px;overflow:hidden;">
+        <button style="width:100%;text-align:left;padding:14px 16px;cursor:pointer;background:none;border:none;color:inherit;" onclick="toggleAcc(this)">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="blok-tag" style="background:${blokKleur}22;color:${blokKleur};flex-shrink:0;">${e.blok}</span>
+              <div>
+                <div style="font-weight:600;color:white;font-size:14px;">${e.vanWie}</div>
+                <div style="font-size:12px;color:#64748b;">${e.rol} · ${e.skill} · ${e.datum}</div>
+              </div>
+            </div>
+            <span class="arrow" style="color:#64748b;flex-shrink:0;">▼</span>
+          </div>
+        </button>
+        <div class="accordion-content" style="padding:0 16px 16px;border-top:1px solid #1e293b;">
+          <div style="margin-top:12px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#22c55e;margin-bottom:6px;">Feedback</div>
+            <blockquote style="color:#cbd5e1;font-size:13px;line-height:1.65;margin:0;">"${e.tekst}"</blockquote>
+          </div>
+          <div style="margin-top:12px;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#3b82f6;margin-bottom:4px;">Wat heb ik ermee gedaan</div>
+            <p style="color:#cbd5e1;font-size:13px;line-height:1.65;margin:0;">${e.gedaan}</p>
+          </div>
+        </div>
+      </div>`
+    }
+  }).join('')
+}
+
+function buildBewijs(data) {
+  const icoontje = t => t==='prestatie'?'🏆':t==='link'?'🔗':t==='certificaat'?'📜':'📄'
+  const el = document.getElementById('bewijs-grid')
+  el.innerHTML = data.map(e => {
+    const blokKleur = e.blok === 'Blok 4' ? '#6366f1' : e.blok === 'Blok 3' ? '#ef4444' : e.blok === 'Blok 2' ? '#22c55e' : '#f59e0b'
+    return `<div class="bewijs-item" data-blok="${e.blok}" style="background:#0f172a;border:1px solid #1e293b;border-radius:14px;padding:16px;display:flex;gap:12px;">
+      <span style="font-size:24px;flex-shrink:0;">${icoontje(e.type)}</span>
+      <div style="flex:1;">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px;">
+          <span class="blok-tag" style="background:${blokKleur}22;color:${blokKleur};">${e.blok}</span>
+          <span style="font-size:11px;color:#64748b;">${e.skill}</span>
+        </div>
+        <h3 style="font-weight:600;color:white;font-size:14px;margin:0 0 6px;">${e.titel}</h3>
+        <p style="color:#94a3b8;font-size:13px;line-height:1.6;margin:0;">${e.beschrijving}</p>
+        ${e.url ? `<a href="${e.url}" target="_blank" rel="noopener" style="color:#60a5fa;font-size:13px;display:inline-block;margin-top:6px;">Bekijk link →</a>` : ''}
+      </div>
+    </div>`
+  }).join('')
+}
+
+function buildDoelen() {
+  const el = document.getElementById('doelen-list')
+  el.innerHTML = DOELEN.map((d, idx) => {
+    const behaald = d.status === 'behaald'
+    const bewijsHtml = d.bewijs ? `
+      <div style="margin-top:14px;border-top:1px solid #1e293b;padding-top:14px;">
+        <p style="color:#64748b;font-size:12px;font-weight:600;letter-spacing:.05em;margin-bottom:10px;">BEWIJSSTUKKEN ONTWIKKELDOEL</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          ${d.bewijs.map((b,bi) => `
+            <details style="background:#1e293b;border-radius:10px;overflow:hidden;">
+              <summary style="padding:12px;cursor:pointer;display:flex;align-items:flex-start;gap:10px;list-style:none;">
+                <span style="width:22px;height:22px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:white;">${bi+1}</span>
+                <span style="color:#f1f5f9;font-size:13px;font-weight:600;line-height:1.5;">${b.titel}</span>
+              </summary>
+              <div style="padding:0 12px 14px 44px;">
+                <p style="color:#94a3b8;font-size:13px;line-height:1.7;margin-bottom:8px;">${b.detail}</p>
+                <div style="background:#0f172a;border-radius:8px;padding:10px;">
+                  <p style="color:#60a5fa;font-size:11px;font-weight:600;margin-bottom:4px;">WAT HEB IK HIERVAN GELEERD?</p>
+                  <p style="color:#cbd5e1;font-size:13px;line-height:1.6;margin:0;">${b.geleerd}</p>
+                </div>
+              </div>
+            </details>`).join('')}
+        </div>
+        <div style="background:#0f172a;border:1px solid #22c55e33;border-radius:10px;padding:12px;margin-top:10px;">
+          <p style="color:#22c55e;font-size:11px;font-weight:600;margin-bottom:6px;">CONCLUSIE ONTWIKKELDOEL</p>
+          <p style="color:#cbd5e1;font-size:13px;line-height:1.7;margin:0;">Door podcasts, documentaires en gesprekken met professionals heb ik mijn ontwikkeldoel behaald. Ik kan nu uitleggen wat een jeugdscout en zaakwaarnemer doen, welke vaardigheden daarbij horen en waarom deze beroepen mij aanspreken. Hierdoor heb ik een beter beeld gekregen van een mogelijke toekomstige carrière binnen de voetbalwereld.</p>
+        </div>
+      </div>` : ''
+    return `
+    <div style="background:#0f172a;border:1px solid ${behaald ? '#22c55e44' : '#1e293b'};border-radius:14px;padding:16px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <span style="width:18px;height:18px;border-radius:50%;background:${behaald ? '#22c55e' : 'transparent'};border:2px solid ${behaald ? '#22c55e' : '#2563eb'};display:flex;align-items:center;justify-content:center;flex-shrink:0;">${behaald ? '<svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>' : ''}</span>
+        <span class="blok-tag" style="background:#2563eb22;color:#60a5fa;">${d.skill}</span>
+        <span class="blok-tag" style="background:${behaald ? '#22c55e22' : '#f59e0b22'};color:${behaald ? '#22c55e' : '#f59e0b'};">${behaald ? 'Behaald ✓' : 'Niveau 2'}</span>
+      </div>
+      <h3 style="font-weight:700;color:white;font-size:15px;margin:0 0 10px;">${d.doel}</h3>
+      <div style="font-size:13px;line-height:1.6;">
+        <div><span style="color:#64748b;">Specifiek: </span><span style="color:#cbd5e1;">${d.specifiek}</span></div>
+        <div style="margin-top:4px;"><span style="color:#64748b;">Meetbaar: </span><span style="color:#cbd5e1;">${d.meetbaar}</span></div>
+        <div style="margin-top:4px;"><span style="color:#64748b;">Tijdgebonden: </span><span style="color:#cbd5e1;">${d.tijdgebonden}</span></div>
+      </div>
+      ${bewijsHtml}
+    </div>`
+  }).join('')
+}
+
+// ── INTERACTIES ───────────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'))
+  document.getElementById('tab-'+id).classList.add('active')
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'))
+  btn.classList.add('active')
+}
+
+function showSpin(modus, btn) {
+  document.querySelectorAll('.spin-btn').forEach(b => b.classList.remove('active'))
+  btn.classList.add('active')
+  tekenSpinnenweb(modus)
+}
+
+function toggleAcc(btn) {
+  const content = btn.nextElementSibling
+  const arrow = btn.querySelector('.arrow')
+  const isOpen = content.classList.contains('open')
+  content.classList.toggle('open', !isOpen)
+  if (arrow) arrow.textContent = isOpen ? '▼' : '▲'
+}
+
+function filterAccordion(type, blok, btn) {
+  document.querySelectorAll('.blok-filter-'+type).forEach(b => {
+    b.style.background = '#1e293b'; b.style.color = '#94a3b8'
+  })
+  btn.style.background = '#2563eb'; btn.style.color = 'white'
+  const items = document.querySelectorAll(`.${type}-item`)
+  items.forEach(el => {
+    el.style.display = (blok === 'Alle' || el.dataset.blok === blok) ? 'block' : 'none'
+  })
+}
+
+function filterCards(blok, btn) {
+  document.querySelectorAll('.blok-filter-bewijs').forEach(b => {
+    b.style.background = '#1e293b'; b.style.color = '#94a3b8'
+  })
+  btn.style.background = '#2563eb'; btn.style.color = 'white'
+  document.querySelectorAll('.bewijs-item').forEach(el => {
+    el.style.display = (blok === 'Alle' || el.dataset.blok === blok) ? 'flex' : 'none'
+  })
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+buildAccordion('starrt', STARRT)
+buildAccordion('feedback', FEEDBACK)
+buildBewijs(BEWIJS)
+buildDoelen()
+buildScoreTable()
+tekenSpinnenweb('vergelijk')
+</script>
+</body>
+</html>
